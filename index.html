@@ -9,8 +9,7 @@
 </head>
 <body>
 
-<!-- Вся структура приложения — единый контейнер -->
-<div class="app-container">
+<div class="container">
 
   <!-- Шапка с логотипом -->
   <div class="header">
@@ -29,73 +28,57 @@
     <div class="tab" onclick="switchTab('history')">Созданные ссылки</div>
   </div>
 
-  <!-- Основной контент -->
-  <div class="content">
+  <!-- Вкладка: Генератор -->
+  <div id="main" class="tab-content active">
+    <h2>Генератор UTM-меток</h2>
 
-    <!-- Вкладка: Генератор -->
-    <div id="main" class="tab-content active">
-      <h2>Генератор UTM-меток</h2>
+    <label>Исходная ссылка:</label>
+    <input type="url" id="urlInput" placeholder="https://example.com" />
 
-      <label>Исходная ссылка:</label>
-      <input type="url" id="urlInput" placeholder="https://example.com" />
+    <label>Канал (medium):</label>
+    <select id="medium">
+      <option value="email">Email</option>
+      <option value="push">Push-уведомление</option>
+      <option value="banner">Баннер</option>
+      <option value="social">Соцсети</option>
+      <option value="cpc">Контекстная реклама</option>
+      <option value="referral">Реферальный трафик</option>
+    </select>
 
-      <label>Канал (medium):</label>
-      <select id="medium">
-        <option value="email">Email</option>
-        <option value="push">Push-уведомление</option>
-        <option value="banner">Баннер</option>
-        <option value="social">Соцсети</option>
-        <option value="cpc">Контекстная реклама</option>
-        <option value="referral">Реферальный трафик</option>
-      </select>
+    <label>Источник (source):</label>
+    <input type="text" id="source" placeholder="bf_service" />
 
-      <label>Источник (source):</label>
-      <input type="text" id="source" placeholder="bf_service" />
+    <label>Цель (campaign):</label>
+    <input type="text" id="campaign" placeholder="taxi_instruction, adblue_promo и т.п." />
 
-      <label>Цель (campaign):</label>
-      <input type="text" id="campaign" placeholder="taxi_instruction, adblue_promo и т.п." />
+    <label>Контент (content):</label>
+    <input type="text" id="content" placeholder="button_top, version_a и т.п." />
 
-      <label>Контент (content):</label>
-      <input type="text" id="content" placeholder="button_top, version_a и т.п." />
+    <button onclick="generateUTM()">Сгенерировать</button>
+    <button onclick="copyToClipboard()" disabled id="copyBtn">Копировать ссылку</button>
 
-      <button onclick="generateUTM()">Сгенерировать</button>
-      <button onclick="copyToClipboard()" disabled id="copyBtn">Копировать ссылку</button>
+    <p id="result"></p>
+  </div>
 
-      <p id="result"></p>
+  <!-- Вкладка: История -->
+  <div id="history" class="tab-content">
+    <h2>Созданные ссылки</h2>
+
+    <div class="bulk-actions" id="bulkActions" style="display: none;">
+      <div class="bulk-buttons">
+        <button type="button" onclick="selectAll()" class="text-btn">Выбрать всё</button>
+        <button type="button" onclick="deselectAll()" class="text-btn">Снять выделение</button>
+        <button type="button" onclick="deleteSelected()" class="text-btn text-btn-danger">Удалить выбранные</button>
+      </div>
+      <button type="button" onclick="downloadSelected()" class="text-btn">Скачать выбранные (.txt)</button>
     </div>
 
-    <!-- Вкладка: История -->
-    <div id="history" class="tab-content">
-      <h2>Созданные ссылки</h2>
-
-      <div class="bulk-actions" id="bulkActions" style="display: none;">
-        <div class="bulk-buttons">
-          <button type="button" onclick="selectAll()" class="text-btn">Выбрать всё</button>
-          <button type="button" onclick="deselectAll()" class="text-btn">Снять выделение</button>
-          <button type="button" onclick="deleteSelected()" class="text-btn text-btn-danger">Удалить выбранные</button>
-        </div>
-        <button type="button" onclick="downloadSelected()" class="text-btn">Скачать выбранные (.txt)</button>
-      </div>
-
-      <div id="historyList">
-        <!-- Сюда будут подгружаться ссылки -->
-      </div>
+    <div id="historyList">
+      <!-- Сюда будут подгружаться ссылки -->
     </div>
+  </div>
 
-  </div> <!-- .content -->
-
-  <!-- Подвал -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div>
-        <p>© Малюга Иван, 2025</p>
-        <p>менеджер проектов</p>
-      </div>
-      <p>Отдел маркетинговых исследований и клиентских коммуникаций</p>
-    </div>
-  </footer>
-
-</div> <!-- .app-container -->
+</div>
 
 <script src="script.js"></script>
 </body>
