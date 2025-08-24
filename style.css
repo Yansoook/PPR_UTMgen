@@ -1,7 +1,4 @@
-/* style.css — Корпоративный стиль PetrolPlus (финальная версия с адаптацией) */
-
-/* Базовые сбросы */
-* {
+{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -341,3 +338,4 @@ button:disabled {
     font-size: 10px;
   }
 }
+
