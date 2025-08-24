@@ -1,1 +1,316 @@
+/* style.css — Корпоративный стиль PetrolPlus (обновлённый) */
 
+/* 1. Сброс и базовые стили */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px; /* Базовый размер шрифта */
+  scroll-behavior: smooth; /* Опционально: плавная прокрутка */
+}
+
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #d2eee8, #e6f9f7);
+  color: #333;
+  min-height: 100vh;
+  line-height: 1.5;
+}
+
+/* 2. Контейнер с правильной адаптивной высотой */
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Только для визуального скругления (если нужно) */
+}
+
+/* 3. Шапка — фиксированное поведение, адаптивный текст */
+.header {
+  background: #21272b;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 60px;
+}
+
+.header img.logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(100%);
+}
+
+.header h1 {
+  color: white;
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  flex: 1;
+  text-align: center;
+  word-wrap: break-word;
+  line-height: 1.3;
+}
+
+/* 4. Вкладки */
+.tabs {
+  display: flex;
+  background: #21272b;
+}
+
+.tab {
+  flex: 1;
+  padding: 15px 20px;
+  text-align: center;
+  color: #ccc;
+  cursor: pointer;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.tab:hover {
+  color: white;
+}
+
+.tab.active {
+  color: white;
+  background: #1a1f23;
+  border-bottom: 3px solid #00a196;
+}
+
+/* 5. Контент вкладок — растягивается, чтобы вытолкнуть footer */
+.tab-content {
+  flex: 1;
+  padding: 30px;
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* 6. Поля ввода */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background: white;
+  color: #333;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #00a196;
+}
+
+/* 7. Кнопки */
+button {
+  background: #00a196;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+button:hover:not(:disabled) {
+  background: #007a74;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Текстовые кнопки */
+.text-btn {
+  background: none;
+  color: #00a196;
+  border: none;
+  padding: 0;
+  font-size: 0.875rem;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 10px;
+}
+
+.text-btn:hover {
+  color: #007a74;
+  text-decoration: none;
+}
+
+.text-btn-danger {
+  color: #dc3545;
+}
+
+.text-btn-danger:hover {
+  color: #c82333;
+}
+
+/* 8. Группа действий */
+.bulk-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 0.875rem;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.bulk-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* 9. Результат */
+#result {
+  background: #e6f7f5;
+  padding: 15px;
+  border: 1px solid #a0e9e0;
+  border-radius: 6px;
+  margin: 20px 0;
+  font-size: 0.875rem;
+  color: #1a4b47;
+  word-break: break-word;
+  display: none;
+}
+
+#result strong {
+  color: #00a196;
+}
+
+/* 10. История ссылок */
+.link-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  font-size: 0.875rem;
+  gap: 10px;
+}
+
+.link-item:last-child {
+  border-bottom: none;
+}
+
+.link-info {
+  flex: 1;
+  color: #333;
+}
+
+.link-info small {
+  color: #555;
+  line-height: 1.4;
+  display: block;
+}
+
+.link-info small strong {
+  color: #00a196;
+}
+
+.link-checkbox {
+  transform: scale(1.2);
+}
+
+/* 11. Подвал — всегда внизу */
+.footer {
+  background: #21272b;
+  padding: 15px 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  min-height: 60px;
+  text-align: center;
+  color: #696666;
+  font-size: 0.75rem;
+}
+
+.footer h2,
+.footer h3 {
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+/* === Адаптивность (Mobile First) === */
+
+@media (max-width: 768px) {
+  .header,
+  .footer {
+    padding: 12px 15px;
+  }
+
+  .header {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .header h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  .tab-content {
+    padding: 20px 15px;
+  }
+
+  .bulk-actions {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    margin: 0 10px;
+  }
+
+  .header h1 {
+    font-size: 0.95rem;
+    line-height: 1.3;
+  }
+
+  .header img.logo {
+    height: 28px;
+  }
+
+  input, select {
+    font-size: 1rem;
+  }
+
+  button {
+    font-size: 1rem;
+    padding: 12px 16px;
+  }
+
+  .link-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .link-checkbox {
+    margin-top: 8px;
+    margin-left: 0;
+  }
+
+  .footer {
+    gap: 2px;
+    font-size: 0.7rem;
+  }
+}
