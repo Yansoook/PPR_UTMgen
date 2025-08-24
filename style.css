@@ -1,0 +1,249 @@
+/* style.css — Корпоративный стиль PetrolPlus */
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: linear-gradient(135deg, #d2eee8, #e6f9f7);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  color: #333;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Минимальная высота — весь экран */
+}
+
+/* Шапка с логотипом */
+.header {
+  background: #21272b;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 60px;
+  box-sizing: border-box;
+}
+
+.header img.logo {
+  height: 32px;
+  width: auto;
+  filter: brightness(100%);
+  display: block;
+}
+
+.header h1 {
+  color: white;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+
+/* Вкладки */
+.tabs {
+  display: flex;
+  background: #21272b;
+}
+
+.tab {
+  padding: 15px 20px;
+  color: #ccc;
+  cursor: pointer;
+  flex: 1;
+  text-align: center;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+.tab:hover {
+  color: white;
+}
+
+.tab.active {
+  color: white;
+  background: #1a1f23;
+  border-bottom: 3px solid #00a196;
+}
+
+.tab-content {
+  display: none;
+  padding: 30px;
+  flex: 1; /* Даёт контенту растягиваться */
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* Поля ввода */
+input, select {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+  background: white;
+  color: #333;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #00a196;
+}
+
+/* Кнопки */
+button {
+  background: #00a196;
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 16px;
+  margin-top: 10px;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #007a74;
+}
+
+button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Текстовые кнопки */
+.text-btn {
+  background: none;
+  color: #00a196;
+  border: none;
+  padding: 0;
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  margin: 0 10px;
+}
+
+.text-btn:hover {
+  color: #007a74;
+  text-decoration: none;
+}
+
+.text-btn-danger {
+  color: #dc3545;
+}
+
+.text-btn-danger:hover {
+  color: #c82333;
+}
+
+/* Группа действий */
+.bulk-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  font-size: 14px;
+}
+
+.bulk-actions .bulk-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+/* Результат */
+#result {
+  word-break: break-all;
+  background: #e6f7f5;
+  padding: 15px;
+  border-radius: 6px;
+  margin: 20px 0;
+  border: 1px solid #a0e9e0;
+  display: none;
+  font-size: 14px;
+  color: #1a4b47;
+}
+
+#result strong {
+  color: #00a196;
+}
+
+/* История ссылок */
+.link-item {
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+}
+
+.link-item:last-child {
+  border-bottom: none;
+}
+
+.link-info {
+  flex: 1;
+  color: #333;
+}
+
+.link-info small {
+  color: #555;
+  line-height: 1.4;
+}
+
+.link-info small strong {
+  color: #00a196;
+}
+
+.link-checkbox {
+  margin-left: 15px;
+  transform: scale(1.2);
+}
+/* Подвал */
+.footer {
+  background: #21272b;
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  height: 60px;
+  box-sizing: border-box;
+  /* Добавьте margin-top: auto, чтобы прижать к низу */
+  margin-top: auto;
+}
+
+
+.footer h2 {
+  color: rgb(105, 102, 102);
+  margin: 0;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
+.footer h3 {
+  color: rgb(105, 102, 102);
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
+}
