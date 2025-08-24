@@ -204,8 +204,33 @@ button:disabled {
 .link-info small strong {
   color: #00a196;
 }
+/* Подвал */
+.footer {
+  background: #21272b;
+  color: #ccc;
+  font-size: 14px;
+  padding: 20px 30px;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+}
+
+.footer-content {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.footer-content p {
+  margin: 5px 0;
+  color: #aaa;
+}
+
+.footer-content strong {
+  color: white;
+}
 
 .link-checkbox {
   margin-left: 15px;
   transform: scale(1.2);
+
 }
