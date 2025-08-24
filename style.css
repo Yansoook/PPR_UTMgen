@@ -8,15 +8,16 @@ body {
   color: #333;
 }
 
-/* Единый контейнер приложения с закруглёнными краями */
-.app-container {
+.container {
   max-width: 800px;
-  margin: 30px auto;
+  margin: 0 auto;
   background: white;
-  border-radius: 30px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 0;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
   overflow: hidden;
-  border: 1px solid #e0e0e0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Минимальная высота — весь экран */
 }
 
 /* Шапка с логотипом */
@@ -74,13 +75,10 @@ body {
   border-bottom: 3px solid #00a196;
 }
 
-/* Основной контент */
-.content {
-  padding: 30px;
-}
-
 .tab-content {
   display: none;
+  padding: 30px;
+  flex: 1; /* Даёт контенту растягиваться */
 }
 
 .tab-content.active {
@@ -215,45 +213,37 @@ button:disabled {
   margin-left: 15px;
   transform: scale(1.2);
 }
-
-/* Подвал — часть общего дизайна */
+/* Подвал */
 .footer {
   background: #21272b;
-  padding: 20px 30px;
-  color: white;
-  font-size: 14px;
-  border-top: 1px solid #1a1f23;
-}
-
-.footer-content {
+  padding: 15px 30px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
+  height: 60px;
+  box-sizing: border-box;
+  /* Добавьте margin-top: auto, чтобы прижать к низу */
+  margin-top: auto;
 }
 
-.footer-content p {
+
+.footer h2 {
+  color: rgb(105, 102, 102);
   margin: 0;
-  line-height: 1.4;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
 }
-
-/* Адаптив для мобильных */
-@media (max-width: 600px) {
-  .app-container {
-    margin: 15px;
-    border-radius: 20px;
-  }
-  .header, .footer {
-    padding: 15px 20px;
-  }
-  .content {
-    padding: 20px;
-  }
-  .footer-content {
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    gap: 5px;
-  }
+.footer h3 {
+  color: rgb(105, 102, 102);
+  margin: 0;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex: 1;
 }
