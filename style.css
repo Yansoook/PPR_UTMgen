@@ -205,4 +205,36 @@ button:disabled {
   color: #00a196;
 }
 
+/* Подвал — стиль как у шапки */
+.footer {
+  background: #21272b;
+  padding: 20px 30px;
+  margin-top: 30px;
+  border-top: 1px solid #1a1f23;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-content p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Адаптив: на узких экранах — центрирование */
+@media (max-width: 600px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 5px;
+  }
+}
 
