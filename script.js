@@ -45,37 +45,37 @@ function switchTab(tabName) {
 // Генерация UTM-ссылки
 function generateUTM() {
   const urlInput = document.getElementById("urlInput").value.trim();
-  const medium = document.getElementById("medium").value;
-  const source = document.getElementById("source").value.trim() || "unknown";
-  const campaign = document.getElementById("campaign").value.trim() || "default";
-  const content = document.getElementById("content").value.trim() || "";
+  const source = document.getElementById("source").value; // например, banner, email
+  const campaign = document.getElementById("campaign").value.trim();
 
   if (!urlInput) {
     alert("Введите ссылку!");
+    return;
+  }
+  if (!campaign) {
+    alert("Введите цель (utm_campaign)");
     return;
   }
 
   try {
     const url = new URL(urlInput);
     url.searchParams.set("utm_source", source);
-    url.searchParams.set("utm_medium", medium);
+    url.searchParams.set("utm_medium", "referral");
     url.searchParams.set("utm_campaign", campaign);
-    if (content) url.searchParams.set("utm_content", content);
+    url.searchParams.set("utm_content", "1");
 
     const finalUrl = url.toString();
     document.getElementById("result").textContent = finalUrl;
     document.getElementById("result").style.display = "block";
     document.getElementById("copyBtn").disabled = false;
 
-    // Сохраняем в историю (id как строка)
+    // Сохраняем в историю
     const entry = {
       id: Date.now().toString(),
       timestamp: new Date().toLocaleString('ru-RU'),
       url: finalUrl,
       source,
-      medium,
-      campaign,
-      content
+      campaign
     };
     linkHistory.push(entry);
     saveToLocalStorage();
@@ -115,8 +115,7 @@ function renderHistory() {
       <div class="link-info">
         <strong>[${entry.timestamp}]</strong><br>
         <small><strong>Ссылка:</strong> ${entry.url}</small><br>
-        <small><strong>Канал:</strong> ${entry.medium} | 
-               <strong>Источник:</strong> ${entry.source} | 
+        <small><strong>Канал:</strong> ${entry.source} | 
                <strong>Цель:</strong> ${entry.campaign}</small>
       </div>
       <input type="checkbox" class="link-checkbox" data-id="${entry.id}" onchange="toggleBulkActions()">
@@ -124,7 +123,6 @@ function renderHistory() {
     list.appendChild(div);
   });
 
-  // Скрыть действия при загрузке
   document.getElementById("bulkActions").style.display = "none";
 }
 
@@ -161,17 +159,9 @@ function deleteSelected() {
   }
 
   const selectedIds = Array.from(checked).map(cb => cb.dataset.id);
-  
-  // Фильтруем: оставляем только неотмеченные
   linkHistory = linkHistory.filter(link => !selectedIds.includes(link.id));
-  
-  // Сохраняем обновлённую историю
   saveToLocalStorage();
-  
-  // ✅ Обновляем интерфейс — удаляем элементы из DOM
-  renderHistory(); // Перерисовываем список
-
-  // Скрываем панель действий
+  renderHistory();
   document.getElementById("bulkActions").style.display = "none";
 }
 
@@ -189,11 +179,8 @@ function downloadSelected() {
   selectedLinks.forEach(entry => {
     text += `[Дата создания: ${entry.timestamp}]\n`;
     text += `Ссылка: ${entry.url}\n`;
-    text += `Канал: ${entry.medium}\n`;
-    text += `Источник: ${entry.source}\n`;
-    text += `Компания: ${entry.source}\n`;
-    text += `Что продвигаем (цель): ${entry.campaign}\n`;
-    if (entry.content) text += `Контент: ${entry.content}\n`;
+    text += `Канал: ${entry.source}\n`;
+    text += `Цель: ${entry.campaign}\n`;
     text += `----------------------------------------\n`;
   });
 
