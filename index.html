@@ -1,1 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>UTM-Генератор | PetrolPlus</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+<div class="container">
+  <!-- Шапка с логотипом -->
+  <div class="header">
+    <img 
+      src="https://www.petrolplus.ru/assets/47e3d030-1ac8-48ad-85fe-facdd41c087e/logo-white.svg  " 
+      alt="PetrolPlus" 
+      class="logo"
+      loading="lazy"
+    >
+    <h1>UTM-Генератор для маркетинга</h1>
+  </div>
+
+  <!-- Вкладки -->
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('main')">Главная</div>
+    <div class="tab" onclick="switchTab('history')">Созданные ссылки</div>
+  </div>
+
+  <!-- Основной контент (вкладки) -->
+  <div class="main-content">
+    <!-- Вкладка: Генератор -->
+    <div id="main" class="tab-content active">
+      <h2>Генератор UTM-меток</h2>
+
+      <label>Исходная ссылка:</label>
+      <input type="url" id="urlInput" placeholder="https://example.com  " />
+
+      <label>Канал (medium):</label>
+      <select id="medium">
+        <option value="email">Email</option>
+        <option value="push">Push-уведомление</option>
+        <option value="banner">Баннер</option>
+        <option value="social">Соцсети</option>
+        <option value="cpc">Контекстная реклама</option>
+        <option value="referral">Реферальный трафик</option>
+      </select>
+
+      <label>Источник (source):</label>
+      <input type="text" id="source" placeholder="bf_service" />
+
+      <label>Цель (campaign):</label>
+      <input type="text" id="campaign" placeholder="taxi_instruction, adblue_promo и т.п." />
+
+      <label>Контент (content):</label>
+      <input type="text" id="content" placeholder="button_top, version_a и т.п." />
+
+      <button onclick="generateUTM()">Сгенерировать</button>
+      <button onclick="copyToClipboard()" disabled id="copyBtn">Копировать ссылку</button>
+
+      <p id="result"></p>
+    </div>
+
+    <!-- Вкладка: История -->
+    <div id="history" class="tab-content">
+      <h2>Созданные ссылки</h2>
+
+      <div class="bulk-actions" id="bulkActions" style="display: none;">
+        <div class="bulk-buttons">
+          <button type="button" onclick="selectAll()" class="text-btn">Выбрать всё</button>
+          <button type="button" onclick="deselectAll()" class="text-btn">Снять выделение</button>
+          <button type="button" onclick="deleteSelected()" class="text-btn text-btn-danger">Удалить выбранные</button>
+        </div>
+        <button type="button" onclick="downloadSelected()" class="text-btn">Скачать выбранные (.txt)</button>
+      </div>
+
+      <div id="historyList">
+        <!-- Сюда будут подгружаться ссылки -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Подвал -->
+  <div class="footer">
+    <h2>
+      
+    </h2>
+    <h3>
+      
+    </h3>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+
+</html>
 
